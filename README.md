@@ -47,7 +47,7 @@
 ## Class Diagram and Package Structure
 
 ### Class Diagram
-- [Class Diagram](./Dining Philosopher.png)
+- ![Class Diagram](./Dining Philosopher.png)
 
 ### Package Structure
 
