@@ -4,7 +4,10 @@ import org.Multithreading.Core.Fork;
 import org.Multithreading.Core.Philosopher;
 import org.Multithreading.Core.ResourceAllocationPhilosopher;
 import org.Multithreading.Strategy.DiningStrategy;
+import org.Multithreading.Strategy.impl.DeadlockPreventionStrategy;
 import org.Multithreading.Strategy.impl.ResourceAllocationImpl;
+
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
@@ -13,7 +16,28 @@ public class Main {
         Fork[] forks = new Fork[PHILOSOPHER_COUNT];
         Thread[] philosophers = new Thread[PHILOSOPHER_COUNT];
 
-        DiningStrategy strategy = new ResourceAllocationImpl();
+        DiningStrategy strategy = null;
+
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Choose from below options");
+        System.out.println("Press 1 for ResourceHierarchy Solution, 2 for DeadlockPrevention Solution");
+
+        String option = sc.nextLine();
+
+        switch(option) {
+            case "1" :
+                strategy = new ResourceAllocationImpl();
+                break;
+
+            case "2" :
+                strategy = new DeadlockPreventionStrategy(PHILOSOPHER_COUNT - 1);
+                break;
+
+            default:
+                break;
+        }
+
+
 
         for(int i = 0; i< PHILOSOPHER_COUNT; i++) {
             forks[i] = new Fork(i+1);
