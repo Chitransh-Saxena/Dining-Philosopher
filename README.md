@@ -47,7 +47,7 @@
 ## Class Diagram and Package Structure
 
 ### Class Diagram
-- ![Class Diagram](./Dining Philosopher.png)
+- ![Dining Philosopher.png](Dining%20Philosopher.png)
 
 ### Package Structure
 
@@ -103,8 +103,6 @@
     - Attempting to Acquire the Second Fork: Once inside the outer synchronized block, the philosopher attempts to pick up the second fork (secondFork) by entering the inner synchronized block. If the secondFork is available, the philosopher acquires the lock on the secondFork object and proceeds to "eat." If the secondFork is not available, the philosopher is blocked at the entrance of the inner synchronized block but still holds the lock on the firstFork.
     - Critical Point for Deadlock Prevention: Because the philosopher can only proceed to eat (and eventually exit the synchronized blocks, releasing the forks) if they acquire both forks, no philosopher can indefinitely hold a single fork while waiting for another. If the second fork is not available, the philosopher is blocked from eating but does not release the first fork. This might seem like it could lead to deadlock, but because all philosophers follow the same global order for picking up forks, a circular wait (which is necessary for a deadlock) cannot occur.
     - Releasing Forks: Once the philosopher finishes eating, they exit the inner synchronized block, releasing the lock on the secondFork, and then exit the outer synchronized block, releasing the lock on the firstFork. This allows other philosophers to acquire these forks.
-  - DeadlockPrevention
-    - 
 
 
 
